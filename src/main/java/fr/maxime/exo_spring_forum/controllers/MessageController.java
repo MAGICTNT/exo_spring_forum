@@ -1,7 +1,6 @@
 package fr.maxime.exo_spring_forum.controllers;
 
 import fr.maxime.exo_spring_forum.model.Message;
-import fr.maxime.exo_spring_forum.model.Profile;
 import fr.maxime.exo_spring_forum.service.LoginService;
 import fr.maxime.exo_spring_forum.service.MessageService;
 import fr.maxime.exo_spring_forum.service.ProfileService;
@@ -31,7 +30,7 @@ public class MessageController {
                               Model model) throws IOException {
 
         model.addAttribute("connected", loginService.isLogged());
-        message.setIdProfile(profileService.findProfileByLogin(loginService.getPseudo()).getId());
+        message.setIdProfile(profileService.findProfileByLogin(loginService.getPseudo()));
         if (bindingResult.hasErrors()) {
             System.out.println("error");
             return "newMessage";

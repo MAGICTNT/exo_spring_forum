@@ -1,11 +1,8 @@
 package fr.maxime.exo_spring_forum.controllers;
 
-import fr.maxime.exo_spring_forum.model.CommentId;
 import fr.maxime.exo_spring_forum.model.Message;
-import fr.maxime.exo_spring_forum.model.Comment;
 import fr.maxime.exo_spring_forum.service.LoginService;
 import fr.maxime.exo_spring_forum.service.MessageService;
-import fr.maxime.exo_spring_forum.service.CommentService;
 import fr.maxime.exo_spring_forum.service.ProfileService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,18 +11,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.time.Instant;
-
 @Controller
 public class CommentController {
     private final LoginService loginService;
     private final MessageService messageService;
-    private final CommentService commentService;
+//    private final CommentService commentService;
     private final ProfileService profileService;
 
-    public CommentController(MessageService messageService, CommentService commentService, ProfileService profileService, LoginService loginService) {
+    public CommentController(MessageService messageService,
+//                             CommentService commentService,
+                             ProfileService profileService, LoginService loginService) {
         this.messageService = messageService;
-        this.commentService = commentService;
+//        this.commentService = commentService;
         this.profileService = profileService;
         this.loginService = loginService;
     }
@@ -49,14 +46,14 @@ public class CommentController {
 
         Message message = messageService.getMessageById(id);
         if (message != null) {
-            CommentId newComment = new CommentId();
-            newComment.setIdMessage(id);
-            newComment.setIdProfile(profileService.findProfileByLogin(loginService.getPseudo()).getId());
-            Comment comment = new Comment();
-            comment.setId(newComment);
-            comment.setDateComment(Instant.now());
-            comment.setCommentMessage(commentText);
-            commentService.saveComment(comment);
+//            CommentId newComment = new CommentId();
+//            newComment.setIdMessage(id);
+//            newComment.setIdProfile(profileService.findProfileByLogin(loginService.getPseudo()).getId());
+//            Comment comment = new Comment();
+//            comment.setId(newComment);
+//            comment.setDateComment(Instant.now());
+//            comment.setCommentMessage(commentText);
+//            commentService.saveComment(comment);
 
             return "redirect:/commentMessage/id=" + id;
         }
