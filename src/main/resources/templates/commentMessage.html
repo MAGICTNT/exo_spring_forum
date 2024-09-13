@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Commenter le message</title>
+    <!-- Importation de Bootstrap si nécessaire -->
+    <!-- <span th:replace="~{/composant/bootstrapImports :: bootstrapImports}"></span> -->
+</head>
+<body>
+<div>
+    <h1>Commenter le message</h1>
+
+    <!-- Affichage du message à commenter -->
+    <div th:if="${message}">
+        <h2 th:text="${message.getLabelMessage()}"></h2>
+        <p th:text="${message.getLabelMessage()}"></p>
+    </div>
+
+    <!-- Formulaire pour ajouter un commentaire -->
+    <form th:action="@{/AddCommentMessage/id={id}(id=${message.id})}" method="post">
+        <label for="commentText">Votre commentaire:</label><br>
+        <textarea id="commentText" name="commentText" rows="4" cols="50"></textarea><br><br>
+        <input type="submit" value="Ajouter un commentaire">
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>tout les messages</title>
+    <!--    <span th:replace="~{/composant/bootstrapImports :: bootstrapImports}"></span> -->
+</head>
+<body>
+<span th:replace="~{/composants/navHeaderLogin :: navHeaderLogin}"></span>
+<h1>Tout les messages</h1>
+<div th:each="message: ${messages}">
+    <div>
+        <div>
+            <p th:text="${message.getLabelMessage().toUpperCase()}"></p>
+            <p th:text="${message.getContentMessage()}"></p>
+            <p th:text="${message.getIdProfile()}"></p>
+            <p>Créé le : <span th:text="${message.getDatePublish()}"></span> </p>
+        </div>
+        <a th:href="@{/commentMessage/id={id}(id=${message.getId()})}" class="text-white"> commenté</a>
+        <button><a href="@{message/}"></a>commenté</button>
+    </div>
+</div>
+</body>
+</html>

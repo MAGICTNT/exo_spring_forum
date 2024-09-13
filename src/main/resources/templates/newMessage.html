@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>créé un nouveau message</title>
+    <!--    <span th:replace="~{/composant/bootstrapImports :: bootstrapImports}"></span> -->
+</head>
+<body>
+    <span th:replace="~{/composants/navHeaderLogin :: navHeaderLogin}"></span>
+    <h1>Créé un messages</h1>
+    <form th:action="@{/newMessage}" th:object="${message}" method="post">
+        <div>
+            <label for="labelMessage">entete du message</label>
+            <input id="labelMessage"
+                   name="labelMessage"
+                   type="text"
+                   th:field="*{labelMessage}"
+            >
+            <span th:if="${#fields.hasErrors('labelMessage')}"
+                  th:errors="*{labelMessage}"></span>
+        </div>
+        <div>
+            <label for="contentMessage">contenu:</label>
+            <textarea id="contentMessage"
+                   name="contentMessage"
+                   type="text"
+                   th:field="*{contentMessage}"
+            ></textarea>
+            <span th:if="${#fields.hasErrors('contentMessage')}"
+                  th:errors="*{contentMessage}"></span>
+        </div>
+        <button type="submit">cree</button>
+    </form>
+</body>
+</html>
